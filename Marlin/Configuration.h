@@ -473,9 +473,9 @@
 #define USE_XMIN_PLUG
 #define USE_YMIN_PLUG
 #define USE_ZMIN_PLUG
-#define USE_XMAX_PLUG
+//#define USE_XMAX_PLUG
 //#define USE_YMAX_PLUG
-//#define USE_ZMAX_PLUG
+#define USE_ZMAX_PLUG
 
 // coarse Endstop Settings
 #define ENDSTOPPULLUPS // Comment this out (using // at the start of the line) to disable the endstop pullup resistors
@@ -529,14 +529,14 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 12800, 80, 6400, 500 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 6400, 80, 12800, 500 }
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 4, 4, 4, 25 }
+#define DEFAULT_MAX_FEEDRATE          { 4, 4, 2, 25 }
 
 /**
  * Default Max Acceleration (change/s) change = mm/s
@@ -780,7 +780,7 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 25 //Thorlabs linear translation stage 25mm.
+#define X_BED_SIZE 8 // mm, Thorlabs DRV001 stepper motor actuator limit.
 #define Y_BED_SIZE 25
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
@@ -789,8 +789,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 8 //mm, travel limit for Thorlabs DRV001 stepper motor
-
+#define Z_MAX_POS 12 //mm, Newport linear stage 12.5 mm travel harware lim.
 /**
  * Software Endstops
  *
