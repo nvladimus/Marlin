@@ -474,7 +474,7 @@
 #define USE_YMIN_PLUG
 #define USE_ZMIN_PLUG
 //#define USE_XMAX_PLUG
-//#define USE_YMAX_PLUG
+#define USE_YMAX_PLUG
 #define USE_ZMAX_PLUG
 
 // coarse Endstop Settings
@@ -496,7 +496,7 @@
 #define Y_MIN_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
 #define Z_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
 #define X_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
-#define Y_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
+#define Y_MAX_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
 #define Z_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
 #define Z_MIN_PROBE_ENDSTOP_INVERTING false // set to true to invert the logic of the probe.
 
@@ -529,14 +529,15 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 6400, 80, 12800, 500 }
+// Note: jumpers on Y driver are physically set to no-yes-no (1/4 step)
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 6400, 40, 12800, 500 }
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 4, 4, 2, 25 }
+#define DEFAULT_MAX_FEEDRATE          { 4, 100, 2, 25 }
 
 /**
  * Default Max Acceleration (change/s) change = mm/s
@@ -544,7 +545,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 10000 }
+#define DEFAULT_MAX_ACCELERATION      { 3000, 50, 100, 10000 }
 
 /**
  * Default Acceleration (change/s) change = mm/s
@@ -781,15 +782,15 @@
 
 // The size of the print bed
 #define X_BED_SIZE 8 // mm, Thorlabs DRV001 stepper motor actuator limit.
-#define Y_BED_SIZE 25
+#define Y_BED_SIZE 200
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
-#define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 12 //mm, Newport linear stage 12.5 mm travel harware lim.
+#define Y_MAX_POS 300
+#define Z_MAX_POS 12 //mm, Newport linear stage 12.5 mm travel hardware lim.
 /**
  * Software Endstops
  *
